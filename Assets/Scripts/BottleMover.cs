@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BottleMover : MonoBehaviour
 {
     public Sprite filledBottle;
-    static float speed = 2f;
-    static int score;
+    static float speed = 2.2f;
+    public static int score;
     public SpriteRenderer spriteRenderer;
     bool perfectbool;
+    public Text ScoreText;
+    public GameObject PerfectText;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,8 +35,8 @@ public class BottleMover : MonoBehaviour
             }
             spriteRenderer.sprite = filledBottle;
     	    score += 3;
-            Debug.Log("Your score is " + score);
-            Debug.Log("Perfect!");
+            ScoreText.text = "SCORE: " + score.ToString();
+            StartCoroutine(ShowPerfect());
             perfectbool = true;
         }
         else if(col.gameObject.name == "score")
@@ -45,8 +48,14 @@ public class BottleMover : MonoBehaviour
             }
             spriteRenderer.sprite = filledBottle;
     	    score++;
-            Debug.Log("Your score is " + score);
+            ScoreText.text = "SCORE: " + score.ToString();
             perfectbool = true;
         }
+    }
+    IEnumerator ShowPerfect()
+    {
+        PerfectText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        PerfectText.SetActive(false);   
     }
 }

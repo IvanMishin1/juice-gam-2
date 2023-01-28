@@ -9,6 +9,7 @@ public class ButtonPress : MonoBehaviour
     bool goingdown = true;
     bool goingup = false;
     public float secondstowait;
+    public GameObject BrokenBottleCollector;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,11 +42,22 @@ public class ButtonPress : MonoBehaviour
                 pressed = false;
             }
         }
+        if(Input.GetMouseButtonDown(1))
+        {
+            StartCoroutine(CollectBrokenGlass());
+        }
     }
 
     IEnumerator WaitBeforeGoingUp()
     {
         yield return new WaitForSeconds(secondstowait);
         goingup = true;
+    }
+
+    IEnumerator CollectBrokenGlass()
+    {
+        BrokenBottleCollector.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        BrokenBottleCollector.SetActive(false);
     }
 }
