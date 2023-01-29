@@ -12,13 +12,7 @@ public class BottlesSpawner : MonoBehaviour
     {
         StartCoroutine(Game());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     IEnumerator Game()
     {
         Instantiate(bottle, new Vector3(-9.77f, -3.5f, 0), Quaternion.identity);        

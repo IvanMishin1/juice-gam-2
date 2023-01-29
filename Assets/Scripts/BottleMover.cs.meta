@@ -3,7 +3,10 @@ guid: b1764d78a4f2bd74dae397cd3397628e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - filledBottlePrefab: {fileID: 5432615036960581758, guid: 2d4e2395998051f4ca2274471fc8ecd5, type: 3}
+  - ScoreText: {instanceID: 0}
+  - PerfectText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
