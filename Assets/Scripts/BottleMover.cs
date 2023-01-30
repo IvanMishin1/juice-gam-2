@@ -5,14 +5,18 @@ using UnityEngine.UI;
 
 public class BottleMover : MonoBehaviour
 {
-    public GameObject filledBottlePrefab;
+    public Sprite filledBottle;
     static float speed = 2.2f;
     public static int score;
     bool perfectbool;
     public Text ScoreText;
     public GameObject PerfectText;
+    SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
-
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -28,7 +32,7 @@ public class BottleMover : MonoBehaviour
                 perfectbool = false;
                 return;
             }
-            GameObject filledBottle = Instantiate(filledBottlePrefab, transform.position, Quaternion.Euler(0, 0, 0));
+            spriteRenderer.sprite = filledBottle;
             score += 3;
             ScoreText.text = "SCORE: " + score.ToString();
             StartCoroutine(ShowPerfect());
@@ -41,7 +45,7 @@ public class BottleMover : MonoBehaviour
                 perfectbool = false;
                 return;
             }
-            GameObject filledBottle = Instantiate(filledBottlePrefab, transform.position, Quaternion.Euler(0, 0, 0));
+            spriteRenderer.sprite = filledBottle;
             score++;
             ScoreText.text = "SCORE: " + score.ToString();
             perfectbool = true;

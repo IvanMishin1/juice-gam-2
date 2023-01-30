@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1764d78a4f2bd74dae397cd3397628e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filledBottlePrefab: {fileID: 5432615036960581758, guid: 2d4e2395998051f4ca2274471fc8ecd5, type: 3}
+  filledBottle: {fileID: 21300000, guid: 92d18c0333f6bad418924f8f215d61bd, type: 3}
   ScoreText: {fileID: 0}
   PerfectText: {fileID: 0}
 --- !u!61 &4632328916780262917
