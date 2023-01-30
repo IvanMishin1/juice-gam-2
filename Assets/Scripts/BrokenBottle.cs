@@ -7,6 +7,7 @@ public class BrokenBottle : MonoBehaviour
 {
     float speed = 2.2f;
     public Text ScoreText;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,10 @@ public class BrokenBottle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime, 0, 0);
+        //if(audioSource.time > 0)
+        //{
+            transform.Translate(speed * Time.deltaTime, 0, 0);
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D col)

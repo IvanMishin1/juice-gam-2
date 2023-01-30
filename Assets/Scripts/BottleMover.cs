@@ -11,16 +11,20 @@ public class BottleMover : MonoBehaviour
     bool perfectbool;
     public Text ScoreText;
     public GameObject PerfectText;
-    SpriteRenderer spriteRenderer;
+    Animator objectAnimator;
+    public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        objectAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(speed * Time.deltaTime, 0, 0);
+        //if(audioSource.time > 0)
+        //{
+            transform.Translate(speed * Time.deltaTime, 0, 0);
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -32,7 +36,7 @@ public class BottleMover : MonoBehaviour
                 perfectbool = false;
                 return;
             }
-            spriteRenderer.sprite = filledBottle;
+            objectAnimator.SetBool("fullbottle", true);
             score += 3;
             ScoreText.text = "SCORE: " + score.ToString();
             StartCoroutine(ShowPerfect());
@@ -45,7 +49,7 @@ public class BottleMover : MonoBehaviour
                 perfectbool = false;
                 return;
             }
-            spriteRenderer.sprite = filledBottle;
+            objectAnimator.SetBool("fullbottle", true);
             score++;
             ScoreText.text = "SCORE: " + score.ToString();
             perfectbool = true;

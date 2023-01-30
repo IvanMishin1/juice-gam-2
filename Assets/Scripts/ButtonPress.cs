@@ -35,7 +35,7 @@ public class ButtonPress : MonoBehaviour
         if(pressed && goingup)
         {
             transform.Translate(0, 1 * debugnumber, 0);
-            if(transform.position.y >= 3)
+            if(transform.position.y >= 3.7f)
             {
                 goingup = false;
                 goingdown = true;
