@@ -11,6 +11,7 @@ public class ButtonPress : MonoBehaviour
     public float secondstowait;
     public GameObject BrokenBottleCollector;
     public Animator BrokeBottleCollectorAnimator;
+    public static bool isthereabrokenbottle;
     // Update is called once per frame
     void Update()
     {
@@ -51,10 +52,22 @@ public class ButtonPress : MonoBehaviour
 
     IEnumerator CollectBrokenGlass()
     {
-        BrokeBottleCollectorAnimator.SetBool("isgrabbing", true);
         BrokenBottleCollector.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        BrokenBottleCollector.SetActive(false);
-        BrokeBottleCollectorAnimator.SetBool("isgrabbing", false);
+        yield return new WaitForSeconds(0.05f);
+        if(isthereabrokenbottle)
+        {
+            BrokeBottleCollectorAnimator.SetBool("isgrabbing", true);
+            yield return new WaitForSeconds(0.5f);
+            BrokeBottleCollectorAnimator.SetBool("isgrabbing", false);
+            BrokenBottleCollector.SetActive(false);
+        }
+        else
+        {
+            BrokenBottleCollector.SetActive(false);
+            BrokeBottleCollectorAnimator.SetBool("falsegrab", true);
+            yield return new WaitForSeconds(0.3f);
+            BrokeBottleCollectorAnimator.SetBool("falsegrab", false);
+        }
+        isthereabrokenbottle = false;
     }
 }

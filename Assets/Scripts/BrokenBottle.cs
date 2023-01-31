@@ -7,6 +7,7 @@ public class BrokenBottle : MonoBehaviour
 {
     float speed = 2.2f;
     public Text ScoreText;
+    public GameObject perfectText;
     public AudioSource audioSource;
     double audioDelta = 0;
     double lastDspTime = 0;
@@ -27,10 +28,25 @@ public class BrokenBottle : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if(col.gameObject.name == "BrokenCollect")
+        if(col.gameObject.name == "bperfect")
         {
-            Destroy(this.gameObject);
+            BottleMover.score += 3;
             ScoreText.text = "SCORE: " + BottleMover.score.ToString();
+            StartCoroutine(ShowPerfect());
         }
+        else if(col.gameObject.name == "bscore")
+        {
+            BottleMover.score++;
+            ScoreText.text = "SCORE: " + BottleMover.score.ToString();
+            Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator ShowPerfect()
+    {
+        perfectText.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        perfectText.SetActive(false);
+        Destroy(this.gameObject);
     }
 }
