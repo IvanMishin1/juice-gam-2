@@ -10,12 +10,7 @@ public class ButtonPress : MonoBehaviour
     bool goingup = false;
     public float secondstowait;
     public GameObject BrokenBottleCollector;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    public Animator BrokeBottleCollectorAnimator;
     // Update is called once per frame
     void Update()
     {
@@ -56,8 +51,10 @@ public class ButtonPress : MonoBehaviour
 
     IEnumerator CollectBrokenGlass()
     {
+        BrokeBottleCollectorAnimator.SetBool("isgrabbing", true);
         BrokenBottleCollector.SetActive(true);
         yield return new WaitForSeconds(0.5f);
         BrokenBottleCollector.SetActive(false);
+        BrokeBottleCollectorAnimator.SetBool("isgrabbing", false);
     }
 }

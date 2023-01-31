@@ -12,19 +12,21 @@ public class BottleMover : MonoBehaviour
     public Text ScoreText;
     public GameObject PerfectText;
     Animator objectAnimator;
-    public AudioSource audioSource;
+    double audioDelta = 0;
+    double lastDspTime = 0;
     // Start is called before the first frame update
     void Start()
     {
+        audioDelta = AudioSettings.dspTime - lastDspTime;
+        lastDspTime = AudioSettings.dspTime;
         objectAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
-        //if(audioSource.time > 0)
-        //{
-            transform.Translate(speed * Time.deltaTime, 0, 0);
-        //}
+        audioDelta = AudioSettings.dspTime - lastDspTime;
+        lastDspTime = AudioSettings.dspTime;
+        transform.Translate((float)(speed * audioDelta), 0, 0);
     }
 
     void OnCollisionEnter2D(Collision2D col)
