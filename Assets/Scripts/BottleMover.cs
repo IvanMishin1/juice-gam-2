@@ -39,8 +39,8 @@ public class BottleMover : MonoBehaviour
                 return;
             }
             objectAnimator.SetBool("fullbottle", true);
-            score += 3;
-            ScoreText.text = "SCORE: " + score.ToString();
+            score += 2;
+            ScoreText.text = "MONEY: " + ((float)(score) / 10).ToString();
             StartCoroutine(ShowPerfect());
             perfectbool = true;
         }
@@ -53,7 +53,7 @@ public class BottleMover : MonoBehaviour
             }
             objectAnimator.SetBool("fullbottle", true);
             score++;
-            ScoreText.text = "SCORE: " + score.ToString();
+            ScoreText.text = "MONEY: " + ((float)(score) / 10).ToString();
             perfectbool = true;
         }
     }

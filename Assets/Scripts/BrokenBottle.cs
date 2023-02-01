@@ -31,13 +31,13 @@ public class BrokenBottle : MonoBehaviour
         if(col.gameObject.name == "bperfect")
         {
             BottleMover.score += 3;
-            ScoreText.text = "SCORE: " + BottleMover.score.ToString();
+            ScoreText.text = "SCORE: " + ((float)(BottleMover.score) / 10).ToString();
             StartCoroutine(ShowPerfect());
         }
         else if(col.gameObject.name == "bscore")
         {
             BottleMover.score++;
-            ScoreText.text = "SCORE: " + BottleMover.score.ToString();
+            ScoreText.text = "SCORE: " + ((float)(BottleMover.score) / 10).ToString();
             Destroy(this.gameObject);
         }
     }

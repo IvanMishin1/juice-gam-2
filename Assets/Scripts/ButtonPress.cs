@@ -56,10 +56,10 @@ public class ButtonPress : MonoBehaviour
         yield return new WaitForSeconds(0.05f);
         if(isthereabrokenbottle)
         {
+            BrokenBottleCollector.SetActive(false);
             BrokeBottleCollectorAnimator.SetBool("isgrabbing", true);
             yield return new WaitForSeconds(0.5f);
             BrokeBottleCollectorAnimator.SetBool("isgrabbing", false);
-            BrokenBottleCollector.SetActive(false);
         }
         else
         {
