@@ -13,7 +13,7 @@ public class MenuHandler : MonoBehaviour
 
     public void Play() // Switch to the Game Scene
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Level1");
     }
     
     public void Settings() // Switch to the Settings Scene
