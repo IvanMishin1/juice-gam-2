@@ -51,6 +51,7 @@ public class BottleMover : MonoBehaviour
         else if(col.gameObject.name == "score")
         {
             fill.Play();
+            CamerShake.shake = true;
             ButtonPress.isthereabottle = true;
             if(perfectbool)
             {

@@ -15,6 +15,12 @@ public class ButtonPress : MonoBehaviour
     public AudioSource falsegrab;
     public AudioSource falsefill;
     public static bool isthereabottle;
+    Animator FillerAnimator;
+
+    void Start()
+    {
+        FillerAnimator = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -35,7 +41,7 @@ public class ButtonPress : MonoBehaviour
         {
             if(isthereabottle)
             {
-                //do animation
+                StartCoroutine(doAnimation());
                 transform.Translate(0, 1 * debugnumber, 0);
                 if(transform.position.y >= 3.7f)
                 {   
@@ -90,5 +96,12 @@ public class ButtonPress : MonoBehaviour
             BrokeBottleCollectorAnimator.SetBool("falsegrab", false);
         }
         isthereabrokenbottle = false;
+    }
+
+    IEnumerator doAnimation()
+    {
+        FillerAnimator.SetBool("filled", true);
+        yield return new WaitForSeconds(0.4f);
+        FillerAnimator.SetBool("filled", false);
     }
 }

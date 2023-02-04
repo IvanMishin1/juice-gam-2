@@ -33,6 +33,7 @@ public class BrokenBottle : MonoBehaviour
         if(col.gameObject.name == "bperfect")
         {
             grab.Play();
+            CamerShake.shake = true;
             BottleMover.score += 3;
             ScoreText.text = "SCORE: " + ((float)(BottleMover.score) / 10).ToString();
             StartCoroutine(ShowPerfect());
