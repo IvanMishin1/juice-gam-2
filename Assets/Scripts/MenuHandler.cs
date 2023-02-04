@@ -20,9 +20,4 @@ public class MenuHandler : MonoBehaviour
     {
         SceneManager.LoadScene("SettingsMenu");
     }
-    
-    public void Credits() // Switch to the Credits Scene
-    {
-        SceneManager.LoadScene("CreditsMenu");
-    }
 }
