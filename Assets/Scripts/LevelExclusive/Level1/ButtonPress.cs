@@ -12,6 +12,7 @@ public class ButtonPress : MonoBehaviour
     public GameObject BrokenBottleCollector;
     public Animator BrokeBottleCollectorAnimator;
     public static bool isthereabrokenbottle;
+    public AudioSource falsegrab;
     // Update is called once per frame
     void Update()
     {
@@ -64,6 +65,7 @@ public class ButtonPress : MonoBehaviour
         else
         {
             BrokenBottleCollector.SetActive(false);
+            falsegrab.Play();
             BrokeBottleCollectorAnimator.SetBool("falsegrab", true);
             yield return new WaitForSeconds(0.3f);
             BrokeBottleCollectorAnimator.SetBool("falsegrab", false);

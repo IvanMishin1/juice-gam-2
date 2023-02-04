@@ -11,6 +11,8 @@ public class BrokenBottle : MonoBehaviour
     public AudioSource audioSource;
     double audioDelta = 0;
     double lastDspTime = 0;
+    public AudioSource grab;
+    public AudioSource perfectgrab;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,12 +32,14 @@ public class BrokenBottle : MonoBehaviour
     {
         if(col.gameObject.name == "bperfect")
         {
+            grab.Play();
             BottleMover.score += 3;
             ScoreText.text = "SCORE: " + ((float)(BottleMover.score) / 10).ToString();
             StartCoroutine(ShowPerfect());
         }
         else if(col.gameObject.name == "bscore")
         {
+            perfectgrab.Play();
             BottleMover.score++;
             ScoreText.text = "SCORE: " + ((float)(BottleMover.score) / 10).ToString();
             Destroy(this.gameObject);

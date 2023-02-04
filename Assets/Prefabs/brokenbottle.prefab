@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreText: {fileID: 0}
+  perfectText: {fileID: 0}
+  audioSource: {fileID: 0}
+  grab: {fileID: 0}
+  perfectgrab: {fileID: 0}
 --- !u!61 &1124135138202665694
 BoxCollider2D:
   m_ObjectHideFlags: 0
