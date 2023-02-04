@@ -13,6 +13,8 @@ public class ButtonPress : MonoBehaviour
     public Animator BrokeBottleCollectorAnimator;
     public static bool isthereabrokenbottle;
     public AudioSource falsegrab;
+    public AudioSource falsefill;
+    public static bool isthereabottle;
     // Update is called once per frame
     void Update()
     {
@@ -31,12 +33,30 @@ public class ButtonPress : MonoBehaviour
         }
         if(pressed && goingup)
         {
-            transform.Translate(0, 1 * debugnumber, 0);
-            if(transform.position.y >= 3.7f)
+            if(isthereabottle)
             {
-                goingup = false;
-                goingdown = true;
-                pressed = false;
+                //do animation
+                transform.Translate(0, 1 * debugnumber, 0);
+                if(transform.position.y >= 3.7f)
+                {   
+                    goingup = false;
+                    goingdown = true;
+                    pressed = false;
+                    isthereabottle = false;
+                }
+            }
+            else
+            {
+                falsefill.Play();
+                //spawn spill
+                transform.Translate(0, 1 * debugnumber, 0);
+                if(transform.position.y >= 3.7f)
+                {   
+                    goingup = false;
+                    goingdown = true;
+                    pressed = false;
+                    isthereabottle = false;
+                }
             }
         }
         if(Input.GetMouseButtonDown(1))
@@ -55,16 +75,15 @@ public class ButtonPress : MonoBehaviour
     {
         BrokenBottleCollector.SetActive(true);
         yield return new WaitForSeconds(0.05f);
+        BrokenBottleCollector.SetActive(false);
         if(isthereabrokenbottle)
         {
-            BrokenBottleCollector.SetActive(false);
             BrokeBottleCollectorAnimator.SetBool("isgrabbing", true);
             yield return new WaitForSeconds(0.5f);
             BrokeBottleCollectorAnimator.SetBool("isgrabbing", false);
         }
         else
         {
-            BrokenBottleCollector.SetActive(false);
             falsegrab.Play();
             BrokeBottleCollectorAnimator.SetBool("falsegrab", true);
             yield return new WaitForSeconds(0.3f);

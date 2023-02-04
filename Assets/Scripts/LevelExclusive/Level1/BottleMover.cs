@@ -14,6 +14,8 @@ public class BottleMover : MonoBehaviour
     Animator objectAnimator;
     double audioDelta = 0;
     double lastDspTime = 0;
+    public AudioSource fill;
+    public AudioSource perfectfill;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,8 @@ public class BottleMover : MonoBehaviour
     {
         if (col.gameObject.name == "perfect")
         {
+            ButtonPress.isthereabottle = true;
+            perfectfill.Play();
             if(perfectbool)
             {
                 perfectbool = false;
@@ -46,6 +50,8 @@ public class BottleMover : MonoBehaviour
         }
         else if(col.gameObject.name == "score")
         {
+            fill.Play();
+            ButtonPress.isthereabottle = true;
             if(perfectbool)
             {
                 perfectbool = false;
