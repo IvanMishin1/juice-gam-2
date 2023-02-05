@@ -19,6 +19,7 @@ public class BottleMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        score = 0;
         audioDelta = AudioSettings.dspTime - lastDspTime;
         lastDspTime = AudioSettings.dspTime;
         objectAnimator = GetComponent<Animator>();

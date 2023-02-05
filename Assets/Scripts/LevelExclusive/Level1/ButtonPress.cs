@@ -16,9 +16,13 @@ public class ButtonPress : MonoBehaviour
     public AudioSource falsefill;
     public static bool isthereabottle;
     Animator FillerAnimator;
+    public GameObject Spill;
+    public GameObject BottleFill;
+    bool doit = true;
 
     void Start()
     {
+        BottleMover.score = 0;
         FillerAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
@@ -53,8 +57,12 @@ public class ButtonPress : MonoBehaviour
             }
             else
             {
+                if(doit)
+                {
+                    Instantiate(Spill, new Vector3(1.35f, -3.416f, 0), Quaternion.identity);
+                    doit = false;
+                }
                 falsefill.Play();
-                //spawn spill
                 transform.Translate(0, 1 * debugnumber, 0);
                 if(transform.position.y >= 3.7f)
                 {   
@@ -62,6 +70,7 @@ public class ButtonPress : MonoBehaviour
                     goingdown = true;
                     pressed = false;
                     isthereabottle = false;
+                    doit = true;
                 }
             }
         }
@@ -73,6 +82,9 @@ public class ButtonPress : MonoBehaviour
 
     IEnumerator WaitBeforeGoingUp()
     {
+        BottleFill.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        BottleFill.SetActive(false);
         yield return new WaitForSeconds(secondstowait);
         goingup = true;
     }
