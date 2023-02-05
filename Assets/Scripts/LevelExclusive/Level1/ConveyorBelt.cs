@@ -16,12 +16,14 @@ public class ConveyorBelt : MonoBehaviour
 
     void Update()
     {
+        if(PauseManager.playing){
         audioDelta = AudioSettings.dspTime - lastDspTime;
         lastDspTime = AudioSettings.dspTime;
         transform.Translate((float)(2.2f * audioDelta), 0, 0);
         if (transform.position.x > 17.024f) 
         {
             transform.position = new Vector3(-8.997f, transform.position.y, transform.position.z);
+        }
         }
     }
 }

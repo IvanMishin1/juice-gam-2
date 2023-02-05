@@ -19,7 +19,6 @@ public class BottleMover : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
         audioDelta = AudioSettings.dspTime - lastDspTime;
         lastDspTime = AudioSettings.dspTime;
         objectAnimator = GetComponent<Animator>();
@@ -27,9 +26,12 @@ public class BottleMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PauseManager.playing){
+        Debug.Log(score);
         audioDelta = AudioSettings.dspTime - lastDspTime;
         lastDspTime = AudioSettings.dspTime;
         transform.Translate((float)(speed * audioDelta), 0, 0);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)

@@ -23,9 +23,11 @@ public class BrokenBottle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PauseManager.playing){
         audioDelta = AudioSettings.dspTime - lastDspTime;
         lastDspTime = AudioSettings.dspTime;
         transform.Translate((float)(speed * audioDelta), 0, 0);
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)

@@ -22,12 +22,12 @@ public class ButtonPress : MonoBehaviour
 
     void Start()
     {
-        BottleMover.score = 0;
         FillerAnimator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
+        if(PauseManager.playing){
         if(Input.GetMouseButtonDown(0))
         {
             pressed = true;
@@ -77,6 +77,7 @@ public class ButtonPress : MonoBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             StartCoroutine(CollectBrokenGlass());
+        }
         }
     }
 
